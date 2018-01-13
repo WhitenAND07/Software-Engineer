@@ -26,18 +26,16 @@ public class Money {
     }
     
     public Money add (Money other) throws IllegalArgumentException{
-        if(this.currency.equals(other)){
-            Money money = new Money(this.quantity.add(quantity),this.currency);
-            return money;
+        if(this.currency.equals(other.currency)){
+            return new Money(this.quantity.add(quantity),this.currency);
         }
         else{
             throw new IllegalArgumentException("Error: The currencys not are equals.");
         }
     }
     public Money subtract(Money	other)throws IllegalArgumentException{
-        if(this.currency.equals(other)){
-            Money money = new Money(this.quantity.subtract(quantity),this.currency);
-            return money;
+        if(this.currency.equals(other.currency)){
+            return new Money(this.quantity.subtract(other.quantity),this.currency);
         }
         else{
             throw new IllegalArgumentException("Error: The currencys not are equals.");
@@ -49,9 +47,8 @@ public class Money {
         return money;
     }
     public Money change(BigDecimal ratio, Currency to) throws IllegalArgumentException{
-        if(this.currency != to){
-            Money money = new Money(this.quantity.multiply(ratio),this.currency);
-            return money;
+        if(this.currency.equals(to) == false){
+            return new Money(this.quantity.multiply(ratio),this.currency);
         }
         else{
             throw new IllegalArgumentException("Error: The currencys are equals.");
@@ -60,12 +57,7 @@ public class Money {
     
     @Override
     public boolean equals(Object other){
-        if(this.currency.equals(other) && this.quantity.equals(((Money) other).quantity)){ 
-            return true;
-        }
-        else{
-            return false;
-        }
+        return this.currency.equals(((Money)other).currency) && this.quantity.equals(((Money) other).quantity);
     }
     
     @Override
