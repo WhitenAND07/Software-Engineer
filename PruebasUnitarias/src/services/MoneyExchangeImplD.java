@@ -17,7 +17,8 @@ public class MoneyExchangeImplD implements MoneyExchange {
     @Override
     public BigDecimal exchangeRatio (Currency from, Currency to) throws RatioDoesNotExistException{
         if(!from.equals(to)){
-            if(from.equals(new Currency("euro")) && to.equals(new Currency("dollar"))){
+            if(from.equals(new Currency("euro")) && to.equals(new Currency("dollar")) || 
+                    from.equals(new Currency("dollar")) && to.equals(new Currency("euro") )){
                 return new BigDecimal(1.25).setScale(2, RoundingMode.HALF_UP);
             }
         }
