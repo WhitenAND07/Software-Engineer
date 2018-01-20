@@ -9,7 +9,7 @@ package services;
  *
  * @author Jordi Blanco
  */
-class RatioDoesNotExistException extends Exception {
+public class RatioDoesNotExistException extends Exception {
     String message;
     public RatioDoesNotExistException(String message){
         this.message = message;

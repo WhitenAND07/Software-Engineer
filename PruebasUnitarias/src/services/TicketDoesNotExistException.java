@@ -9,7 +9,7 @@ package services;
  *
  * @author Jordi Blanco
  */
-class TicketDoesNotExistException extends Exception {
+public class TicketDoesNotExistException extends Exception {
     String message;
     public TicketDoesNotExistException(String message){
         this.message = message;
