@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import services.MoneyExchange;
-import services.StockExchange;
 import services.MoneyExchangeImplD;
+import services.StockExchange;
 import services.StockExchangeImplD;
 
 /**
@@ -31,16 +31,16 @@ public class CashTest {
      * Test of evaluate method, of class Cash.
      */
     @Test
-    public void evaluateCashAboutDifferentCurrencies() throws Exception {
+    public void evaluateCashAboutDifferentCurrencies() throws EvaluationException {
         Currency from = new Currency("euro");
         Currency to = new Currency("dollar");
         BigDecimal quantity = new BigDecimal(5.14);
         Money money = new Money(quantity, from);
         Cash cash = new Cash(money);
-        MoneyExchange money_exchange = new MoneyExchangeDouble();
-        StockExchange stock_exchange = new StockExchangeDouble();
-        Money result = cash.evaluate(to, money_exchange, stock_exchange);
-        Money expResult = new Money(new BigDecimal(6.43), to);;
+        MoneyExchange moneyEx = new MoneyExchangeDouble();
+        StockExchange stockEx = new StockExchangeDouble();
+        Money result = cash.evaluate(to, moneyEx, stockEx);
+        Money expResult = new Money(new BigDecimal(6.43), to);
         assertEquals(expResult, result);
     }
     
@@ -51,10 +51,10 @@ public class CashTest {
         BigDecimal quantity = new BigDecimal(5.14);
         Money money = new Money(quantity, from);
         Cash cash = new Cash(money);
-        MoneyExchange money_exchange = new MoneyExchangeDouble();
-        StockExchange stock_exchange = new StockExchangeDouble();
-        Money result = cash.evaluate(to, money_exchange, stock_exchange);    
-        Money expResult = new Money(new BigDecimal(5.14), to);;
+        MoneyExchange moneyEx = new MoneyExchangeDouble();
+        StockExchange stockEx = new StockExchangeDouble();
+        Money result = cash.evaluate(to, moneyEx, stockEx);  
+        Money expResult = new Money(new BigDecimal(5.14), to);
         assertEquals(expResult, result);
     }
     
@@ -65,8 +65,8 @@ public class CashTest {
         BigDecimal quantity = new BigDecimal(5.14);
         Money money = new Money(quantity, from);
         Cash cash = new Cash(money);
-        MoneyExchange money_exchange = new MoneyExchangeDouble();
-        StockExchange stock_exchange = new StockExchangeDouble();
-        Money result = cash.evaluate(to, money_exchange, stock_exchange);        
+        MoneyExchange moneyEx = new MoneyExchangeDouble();
+        StockExchange stockEx = new StockExchangeDouble();
+        Money result = cash.evaluate(to, moneyEx, stockEx);       
     }
 }
