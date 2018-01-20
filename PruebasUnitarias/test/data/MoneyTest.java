@@ -20,9 +20,8 @@ public class MoneyTest {
      */
     @Test
     public void testGetCurrency() {
-        System.out.println("*****************TESTgetCurrency*****************");
-        Money instance = new Money (new BigDecimal(1000), new Currency("test"));
-        Currency expResult = new Currency ("test");
+        Money instance = new Money (new BigDecimal(1000), new Currency("euro"));
+        Currency expResult = new Currency ("euro");
         Currency result = instance.getCurrency();
         assertEquals(expResult, result);
     }
@@ -32,10 +31,9 @@ public class MoneyTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("*****************TESTadd*****************");
-        Money other =  new Money (new BigDecimal(1000), new Currency("test"));
-        Money instance =  new Money (new BigDecimal(1000), new Currency("test"));
-        Money expResult =  new Money (new BigDecimal(2000), new Currency("test"));
+        Money other =  new Money (new BigDecimal(1000), new Currency("euro"));
+        Money instance =  new Money (new BigDecimal(1000), new Currency("euro"));
+        Money expResult =  new Money (new BigDecimal(2000), new Currency("euro"));
         Money result = instance.add(other);
         assertEquals(expResult, result);
     }
@@ -45,9 +43,8 @@ public class MoneyTest {
      */
     @Test(expected =IllegalArgumentException.class)
     public void testAddError(){
-        System.out.println("*****************TESTaddError*****************");
-        Money other =  new Money (new BigDecimal(1000), new Currency("test"));
-        Money instance =  new Money (new BigDecimal(1000), new Currency("test2"));
+        Money other =  new Money (new BigDecimal(1000), new Currency("euro"));
+        Money instance =  new Money (new BigDecimal(1000), new Currency("peso"));
         Money result = instance.add(other);
     }
 
@@ -56,10 +53,9 @@ public class MoneyTest {
      */
     @Test
     public void testSubtract() {
-        System.out.println("*****************TESTsubtract*****************");
-        Money other =  new Money (new BigDecimal(1000), new Currency("test"));
-        Money instance =  new Money (new BigDecimal(2000), new Currency("test"));
-        Money expResult =  new Money (new BigDecimal(1000), new Currency("test"));
+        Money other =  new Money (new BigDecimal(1000), new Currency("euro"));
+        Money instance =  new Money (new BigDecimal(2000), new Currency("euro"));
+        Money expResult =  new Money (new BigDecimal(1000), new Currency("euro"));
         Money result = instance.subtract(other);
         assertEquals(expResult, result);
     }
@@ -68,9 +64,8 @@ public class MoneyTest {
      */
     @Test(expected =IllegalArgumentException.class)
     public void testSubtractError() {
-        System.out.println("*****************TESTsubtractError*****************");
-        Money other =  new Money (new BigDecimal(1000), new Currency("test"));
-        Money instance =  new Money (new BigDecimal(1000), new Currency("test2"));
+        Money other =  new Money (new BigDecimal(1000), new Currency("euro"));
+        Money instance =  new Money (new BigDecimal(1000), new Currency("dollar"));
         Money result = instance.subtract(other);
     }
     /**
@@ -78,10 +73,9 @@ public class MoneyTest {
      */
     @Test
     public void testMultiply() {
-        System.out.println("*****************TESTmultiply*****************");
         int multiplier = 2;
-        Money instance =  new Money (new BigDecimal(1000), new Currency("test"));
-        Money expResult = new Money (new BigDecimal(2000), new Currency("test"));;
+        Money instance =  new Money (new BigDecimal(1000), new Currency("euro"));
+        Money expResult = new Money (new BigDecimal(2000), new Currency("euro"));;
         Money result = instance.multiply(multiplier);
         assertEquals(expResult, result);
     }
@@ -91,11 +85,10 @@ public class MoneyTest {
      */
     @Test
     public void testChange() {
-        System.out.println("*****************TESTchange*****************");
         BigDecimal ratio = new BigDecimal(25);
-        Currency to = new Currency("test");
-        Money instance = new Money (new BigDecimal(1000), new Currency("test2"));
-        Money expResult = new Money (new BigDecimal(25000), new Currency("test2"));
+        Currency to = new Currency("euro");
+        Money instance = new Money (new BigDecimal(1000), new Currency("dollar"));
+        Money expResult = new Money (new BigDecimal(25000), new Currency("euro"));
         Money result = instance.change(ratio, to);
         assertEquals(expResult, result);
     }
@@ -104,10 +97,9 @@ public class MoneyTest {
      */
     @Test(expected=IllegalArgumentException.class)
     public void testChangeError() {
-        System.out.println("*****************TESTchangeError*****************");
         BigDecimal ratio = new BigDecimal(25);
-        Currency to = new Currency("test");
-        Money instance = new Money (new BigDecimal(1000), new Currency("test"));
+        Currency to = new Currency("euro");
+        Money instance = new Money (new BigDecimal(1000), new Currency("euro"));
         Money result = instance.change(ratio, to);
     }
     /**
@@ -115,9 +107,8 @@ public class MoneyTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("*****************TESTequals*****************");
-        Object other =  new Money (new BigDecimal(1000), new Currency("test"));
-        Money instance = new Money(new BigDecimal(1000), new Currency("test"));;
+        Object other =  new Money (new BigDecimal(1000), new Currency("euro"));
+        Money instance = new Money(new BigDecimal(1000), new Currency("euro"));;
         boolean expResult = true;
         boolean result = instance.equals(other);
         assertEquals(expResult, result);
@@ -127,9 +118,8 @@ public class MoneyTest {
      */
     @Test
     public void testEqualsNotEquals() {
-        System.out.println("*****************TESTEqualsNotEquals*****************");
-        Object other =  new Money (new BigDecimal(1000), new Currency("test"));
-        Money instance = new Money(new BigDecimal(1000), new Currency("test2"));
+        Object other =  new Money (new BigDecimal(1000), new Currency("euro"));
+        Money instance = new Money(new BigDecimal(1000), new Currency("dollar"));
         boolean expResult = false;
         boolean result = instance.equals(other);
         assertEquals(expResult, result);
