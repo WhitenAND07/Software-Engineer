@@ -14,6 +14,13 @@ import java.math.RoundingMode;
  * @author Jordi Blanco
  */
 public class MoneyExchangeImplD implements MoneyExchange {
+    /**
+     * Function to do the double of the Money Exchange
+     * @param from currency initial
+     * @param to corrency final
+     * @return return a BigDecimal about the ratio
+     * @throws RatioDoesNotExistException When the currency not exist in the service
+     */
     @Override
     public BigDecimal exchangeRatio (Currency from, Currency to) throws RatioDoesNotExistException{
         if(!from.equals(to)){

@@ -11,6 +11,10 @@ package portfolio;
  */
 class EvaluationException extends Exception {
     String message;
+    /**
+     * Constructor
+     * @param message (String) 
+     */
     public EvaluationException(String message){
         this.message = message;
     }

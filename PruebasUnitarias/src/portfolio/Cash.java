@@ -18,9 +18,21 @@ import services.RatioDoesNotExistException;
  */
 public class Cash implements Investment {
     Money money;
+    /**
+     * Constructor
+     * @param money (Money) 
+     */
     public Cash (Money money){
         this.money = money;
     }
+    /**
+     * Function to evaluate a investment in a quantity of a specific currency 
+     * @param currencyTo The specific currency
+     * @param moneyEx External service to evaluate the money exchange 
+     * @param stockEx External service to evaluate the Stock exchange
+     * @return Return a new Money about the result
+     * @throws EvaluationException When not exists the money in the external service
+     */
     @Override
     public Money evaluate(Currency currencyTo, MoneyExchange moneyEx, StockExchange stockEx) throws EvaluationException {
         try{

@@ -21,10 +21,23 @@ import services.TicketDoesNotExistException;
 public class Stock implements Investment {
     Ticket ticket;
     int numShares;
+    /**
+     * Constructor
+     * @param ticket (Ticket)
+     * @param numShares (Integer)
+     */
     public Stock(Ticket ticket, int numShares){
         this.ticket = ticket;
         this.numShares=numShares;
     }
+    /**
+     * Function to evaluate a investment in a number of shares of a given company 
+     * @param currencyTo The specific currency
+     * @param moneyEx External service to evaluate the money exchange 
+     * @param stockEx External service to evaluate the Stock exchange
+     * @return Return a new Money about the result
+     * @throws EvaluationException When not exists the money or the ticket in the external service
+     */
     @Override
     public Money evaluate(Currency currencyTo, MoneyExchange moneyEx, StockExchange stockEx) throws EvaluationException {    
         try {

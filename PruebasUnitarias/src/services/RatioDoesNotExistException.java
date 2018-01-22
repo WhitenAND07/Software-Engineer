@@ -11,6 +11,10 @@ package services;
  */
 public class RatioDoesNotExistException extends Exception {
     String message;
+    /**
+     * Constructor
+     * @param message (String) 
+     */
     public RatioDoesNotExistException(String message){
         this.message = message;
     }

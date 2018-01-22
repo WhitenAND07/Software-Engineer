@@ -18,13 +18,26 @@ import services.StockExchange;
  */
 public class Portfolio implements Investment {
     private ArrayList<Investment> investmentPortfolio = new ArrayList<Investment>();
-    
+    /**
+     * Constructor
+     */
     public Portfolio(){
     }
+    /**
+     * Function to add a Investment to the portfolio
+     * @param investment investment to add
+     */
     public void addInvestment(Investment investment){
         this.investmentPortfolio.add(investment);
     }
-
+    /**
+     * Function to evaluate a set of investments in a quantity of a specific currency 
+     * @param currencyTo The specific currency
+     * @param moneyEx External service to evaluate the money exchange 
+     * @param stockEx External service to evaluate the Stock exchange
+     * @return Return a new Money about the result
+     * @throws EvaluationException When not exists the money or the ticket in the external service 
+     */
     @Override
     public Money evaluate(Currency currencyTo, MoneyExchange moneyEx, StockExchange stockEx) throws EvaluationException {
         Investment invesment;
